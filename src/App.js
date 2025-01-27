@@ -32,23 +32,25 @@ function App() {
       setAlert(null);
       timeoutRef.current = null; // Cleanup the ref after the timeout
     }, 2000);
-
-    // setTimeout(()=>{
-    //   setAlert(null);
-    // }, 2000)
   }
-  const handleMode = ()=>{
+  const handleMode = (theme)=>{
     // console.log(mode);
-    
-    if(mode === 'dark'){
-      setMode('light') 
-      document.body.style.backgroundColor = "white";
-      showAlert("Light mode is enabled", "success");
-    }else{
-      setMode('dark') 
-      document.body.style.backgroundColor = "grey"
-      showAlert("Dark mode is enabled", "success");
-    }
+    // if(theme !== null){
+    //   setMode(theme);
+    // }else{
+
+      if(theme === 'dark'){
+        setMode('dark') 
+        document.body.style.backgroundColor = "grey"
+        showAlert("Dark mode is enabled", "success");
+      }else if(theme === 'light'){
+        setMode('light') 
+        document.body.style.backgroundColor = "white";
+        showAlert("Light mode is enabled", "success");
+      }else{
+        setMode(theme)
+      }
+    // }
   }
   return (
     <>

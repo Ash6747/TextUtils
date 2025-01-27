@@ -55,15 +55,20 @@ export default function Textarea(props) {
             style={{height: "100px"}}
             ></textarea>
             <label className={`${props.mode}`} htmlFor="floatingTextarea2">Comments</label>
-            <p>{text.length}/100</p>
+            {/* .split(" ") it will work for spaces but not for new line(Enter) Instead of this use 
+            regex(regular expresion) (/\s+/)  \s this is for both new line and spaces, + is for more than one 
+            and to use this expresion use //*/}
+            <p>{text.length}/100, Words count = {text.split(/\s+/).filter((element)=>{
+                return element.length !== 0}).length}</p>
 
-            <button className="button-85 m-3" onClick={handleUpText} >Make Uppercase</button>
-            <button className="button-85 m-3" onClick={handleLoText} >Make Lowercase</button>
-            <button className="button-85 m-3" onClick={handleCopyText} >Copy Text</button>
-            <button className="button-85 m-3" onClick={handleSpacesText} >Remove Extra Spaces</button>
-            <button className="button-85 m-3" onClick={handleClearText} >Clear Text</button>
-
+            <button disabled={text.length === 0} className="button-85 m-3" onClick={handleUpText} >Make Uppercase</button>
+            <button disabled={text.length === 0} className="button-85 m-3" onClick={handleLoText} >Make Lowercase</button>
+            <button disabled={text.length === 0} className="button-85 m-3" onClick={handleCopyText} >Copy Text</button>
+            <button disabled={text.length === 0} className="button-85 m-3" onClick={handleSpacesText} >Remove Extra Spaces</button>
+            <button disabled={text.length === 0} className="button-85 m-3" onClick={handleClearText} >Clear Text</button>
         </div>
+        <h2>Preview</h2>
+        <p>{text.length === 0 ? "Nothing to Preview" : text}</p>
     </>
   )
 }

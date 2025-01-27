@@ -30,9 +30,16 @@ export default function Navabar(props) {
                         </li>
                     </ul>
 
+                    <div className="d-flex">
+                        <div className="bg-primary rounded mx-2 border border-secondary theme-box" onClick={()=>{props.changeMode('primary')}} style={{height: "30px", width: "30px"}}></div>
+                        <div className="bg-warning rounded mx-2 border border-secondary theme-box" onClick={()=>{props.changeMode('warning')}} style={{height: "30px", width: "30px"}}></div>
+                        <div className="bg-danger rounded mx-2 border border-secondary theme-box" onClick={()=>{props.changeMode('danger')}} style={{height: "30px", width: "30px"}}></div>
+                    </div>
+                    
+
                     <div className="checkbox-wrapper-5">
                         <div className="check">
-                            <input id="check-5" onClick={props.changeMode} type="checkbox" />
+                            <input id="check-5" onClick={()=>{props.changeMode(props.mode === 'dark' ? 'light' : 'dark')}} type="checkbox" />
                             <label htmlFor="check-5"></label>
                         </div>
                     </div>
